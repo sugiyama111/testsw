@@ -27,7 +27,9 @@ window.addEventListener("message", (event) => {
 	// 	Toast.Info('do nothing because message is from PWA')
 	// 	return;
 	// }
-
+	console.log(event.ports);
+	console.log(event);
+	
 	messagePort = event.ports[0];
 	console.log('port is : '+ messagePort);
 	if (typeof messagePort === 'undefined') return;
