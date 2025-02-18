@@ -10,7 +10,7 @@ function cl() {
 	let d = new Date();
 	document.getElementById('time').innerHTML = d;
 	//window.postMessage("test from html");
-	window.postMessage("test from html", "*", [channel.port1]);
+	window.postMessage("test from html", "*", [channel.port1, channel.port2]);
 	
 }
 
@@ -33,7 +33,7 @@ window.addEventListener("message", (event) => {
 	console.log(event.ports);
 	console.log(event);
 	
-	messagePort = event.ports[0];
+	messagePort = event.ports[1];
 	console.log('port is : '+ messagePort);
 	if (typeof messagePort === 'undefined') return;
 
