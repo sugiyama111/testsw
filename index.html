@@ -4,7 +4,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="manifest" href="/manifest.json" />
 <script>
-const channel = new MessageChannel();
+//const channel = new MessageChannel();
+
+const channel = new MessageChannel(); // 新しいメッセージチャネルを作成
+
+// TWAにチャネルを送信
+window.postMessage("Hello from PWA!", "*", [channel.port1]);
+
+// メッセージを受信するためのリスナー
+channel.port2.onmessage = (event) => {
+    console.log("Received from TWA:", event.data);
+};
 
 function cl() {
 	let d = new Date();
@@ -13,6 +23,7 @@ function cl() {
 	window.postMessage("test from html", "*", [channel.port1]);
 	
 }
+
 
 let messagePort;
 
