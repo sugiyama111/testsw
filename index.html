@@ -4,6 +4,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <script>
 function cl() {
+	let d = new Date();
+	document.getElementById('time').innerHTML = d;
 	window.postMessage("test from html");
 }
 
@@ -14,6 +16,8 @@ function cl() {
 <body>
 
 <input type="button" value="押す" onclick="cl" />
+
+<div style="background:EEE;" id="time"></div>
 
 
 </body>
