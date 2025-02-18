@@ -5,12 +5,11 @@
 <link rel="manifest" href="/manifest.json" />
 <script>
 //const channel = new MessageChannel();
-
+const iframe = document.querySelector('iframe'); // TWAをホストするiframe
 const channel = new MessageChannel(); // 新しいメッセージチャネルを作成
 
 // TWAにチャネルを送信
-window.postMessage("Hello from PWA!", "*", [channel.port1]);
-
+iframe.contentWindow.postMessage("Hello from PWA!", "*", [channel.port1]);
 // メッセージを受信するためのリスナー
 channel.port2.onmessage = (event) => {
     console.log("Received from TWA:", event.data);
@@ -70,6 +69,7 @@ window.addEventListener("message", (event) => {
 <div style="background:#EEE;" id="time"></div>
 
 <div style="background:#FDD;" id="msg"></div>
+<iframe width="100" height="100" />
 
 </body>
 </html>
