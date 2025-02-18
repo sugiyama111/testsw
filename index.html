@@ -33,7 +33,7 @@ window.addEventListener("message", (event) => {
 	console.log(event.ports);
 	console.log(event);
 	
-	messagePort = event.ports[1];
+	messagePort = event.ports[0];
 	console.log('port is : '+ messagePort);
 	if (typeof messagePort === 'undefined') return;
 
