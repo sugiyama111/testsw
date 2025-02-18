@@ -10,7 +10,7 @@ function cl() {
 	let d = new Date();
 	document.getElementById('time').innerHTML = d;
 	//window.postMessage("test from html");
-	document.postMessage("test from html", [channel.port2]);
+	window.postMessage("test from html", [channel.port2]);
 	
 }
 
