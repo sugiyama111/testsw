@@ -12,6 +12,8 @@ function cl() {
 
 
 let messagePort;
+const channel = new MessageChannel();
+console.log(channel);
 
 window.addEventListener("message", (event) => {
 	
