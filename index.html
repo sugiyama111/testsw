@@ -18,8 +18,7 @@ let messagePort;
 
 window.addEventListener("message", (event) => {
 	
-	
-//console.log("Message received in PWA:", event.data);
+	console.log("Message received:", event.data);
 
 	// メッセージのオリジンを確認
 	if (event.origin !== "https://testsw.vercel.app") {
