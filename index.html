@@ -4,6 +4,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="manifest" href="/manifest.json" />
 <script>
+
+
+const turnOnJson = {
+	"action": "com.symbol.datawedge.api.ACTION_SCANNERINPUTPLUGIN",
+	"extra_key": "com.symbol.datawedge.api.EXTRA_PARAMETER",
+	"extra_value": "ENABLE_PLUGIN"
+}
+
+const turnOffJson = {
+	"action": "com.symbol.datawedge.api.ACTION_SCANNERINPUTPLUGIN",
+	"extra_key": "com.symbol.datawedge.api.EXTRA_PARAMETER",
+	"extra_value": "DISABLE_PLUGIN"
+}
+const turnOnJsonStr = JSON.stringify(turnOnJson);
+const turnOffJsonStr = JSON.stringify(turnOffJson);
+
+
 let port;
 
 window.addEventListener("message", function (event) {
@@ -28,7 +45,16 @@ window.addEventListener("message", function (event) {
 
 function cl() {
 	port.postMessage("Test!")
-	console.log('sent "Test"');
+	console.log('sent "Test!"');
+}
+
+function turnOn() {
+	port.postMessage(turnOnJsonStr)
+	console.log('sent TurnOn');
+}
+function turnOff() {
+	port.postMessage(turnOffJsonStr)
+	console.log('sent TurnOff');
 }
 
 </script>
@@ -38,6 +64,10 @@ function cl() {
 <body>
 
 <input type="button" value="押す" onclick="cl()" style="width:200px; height:150px; font-size:x-large;" />
+
+<input type="button" value="turn ON" onclick="turnOn()" style="width:200px; height:150px; font-size:x-large;" />
+
+<input type="button" value="turn OFF" onclick=""turnOff()" style="width:200px; height:150px; font-size:x-large;" />
 
 <div style="background:#EEE;" id="time"></div>
 
