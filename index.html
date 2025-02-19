@@ -16,6 +16,7 @@ window.addEventListener("message", function (event) {
 
   // Post message on this port.
   port.postMessage("Test")
+  console.log('sent "Test"');
 
   // Receive upcoming messages on this port.
   port.onmessage = function(event) {
