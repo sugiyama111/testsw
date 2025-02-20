@@ -46,10 +46,6 @@ console.log(event);
 			console.log("[PostMessage1] Got message" + event.data);
 		};
 	}
-	else if (event.data.type === 'kaesu') {
-		console.log('@page received kaesu: '+event.data.port);
-		port = event.data.port;
-	}
 	else {
 		console.log('@page received something: ');
 		console.log(event);
@@ -58,7 +54,10 @@ console.log(event);
 });
 
 navigator.serviceWorker.addEventListener('message', (event) => {
-	console.log('Received message from SW:', event.data);
+	if (event.data.type === 'kaesu') {
+		console.log('Received message from SW:', event.data);
+		port = event.data.port;
+	}
 });
 
 
