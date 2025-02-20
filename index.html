@@ -50,6 +50,10 @@ console.log(event);
 		console.log('@page received kaesu: '+event.data.port);
 		port = event.data.port;
 	}
+	else {
+		console.log('@page received something: ');
+		console.log(event);
+	}
 
 });
 
