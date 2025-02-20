@@ -28,6 +28,8 @@ window.addEventListener("message", function (event) {
 	// We are receiveing messages from any origin, you can check of the origin by
 	// using event.origin
 console.log("type: "+event.data.type);
+console.log(event);
+
 	// get the port then use it for communication.
 	port = event.ports[0];
 	console.log("port: "+port);
