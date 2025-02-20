@@ -57,6 +57,12 @@ console.log(event);
 
 });
 
+navigator.serviceWorker.addEventListener('message', (event) => {
+	console.log('Received message from SW:', event.data);
+});
+
+
+
 function azukeru() {
 	console.log('azukeru');
 	if (navigator.serviceWorker.controller) {
