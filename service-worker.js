@@ -19,8 +19,8 @@ self.addEventListener('message', (event) => {
 		
 		if (port && event.source) {
 			console.log("now sending");
-			//event.source.postMessage({ type: 'kaesu', port }, [port]);
-			self.postMessage({ type: 'kaesu', port }, [port]);
+			event.source.postMessage({ type: 'kaesu', port }, [port]);
+			//self.postMessage({ type: 'kaesu', port }, [port]);
 		}
 	}
 });
