@@ -25,24 +25,54 @@ const turnOffJsonStr = JSON.stringify(turnOffJson);
 let port;
 
 window.addEventListener("message", function (event) {
-  // We are receiveing messages from any origin, you can check of the origin by
-  // using event.origin
+	// We are receiveing messages from any origin, you can check of the origin by
+	// using event.origin
 
-  // get the port then use it for communication.
-  port = event.ports[0];
-  console.log("port: "+port);
-  if (typeof port === 'undefined') return;
+	// get the port then use it for communication.
+	port = event.ports[0];
+	console.log("port: "+port);
+	
+	if (typeof port === 'undefined') return;
 
-  // Post message on this port.
-  port.postMessage("Test")
-  console.log('sent "Test"');
+	// Post message on this port.
+	port.postMessage("Test")
+	console.log('sent "Test"');
 
-  // Receive upcoming messages on this port.
-  port.onmessage = function(event) {
-    console.log("[PostMessage1] Got message" + event.data);
-  };
+	// Receive upcoming messages on this port.
+	port.onmessage = function(event) {
+		console.log("[PostMessage1] Got message" + event.data);
+	};
+	
+	
+	if (event.data.type === 'kaesu') {
+		console.log('@page received kaesu: '+event.data.port);
+		port = event.data.port;
+	}
+
 });
 
+function azukeru() {
+	console.log('azukeru');
+	if (navigator.serviceWorker.controller) {
+	    navigator.serviceWorker.controller.postMessage(
+		    { type: "azukeru", port: port },
+		    [port] // transferable objects として渡す
+	    );
+	}
+}
+
+function shiraberu() {
+	console.log('port: '+port);
+}
+
+function toridasu() {
+	console.log('toridasu');
+	if (navigator.serviceWorker.controller) {
+	    navigator.serviceWorker.controller.postMessage(
+		    { type: "toridasu" },
+	    );
+	}
+}
 
 function cl() {
 	port.postMessage("Test!")
@@ -64,11 +94,15 @@ function turnOff() {
 </head>
 <body>
 
-<input type="button" value="押す" onclick="cl()" style="width:200px; height:150px; font-size:x-large;" />
+<input type="button" value="押す" onclick="cl()" style="width:200px; height:50px; font-size:x-large;" />
 
-<input type="button" value="turn ON" onclick="turnOn()" style="width:200px; height:150px; font-size:x-large;" />
+<input type="button" value="turn ON" onclick="turnOn()" style="width:200px; height:100px; font-size:x-large;" />
 
-<input type="button" value="turn OFF" onclick="turnOff()" style="width:200px; height:150px; font-size:x-large;" />
+<input type="button" value="turn OFF" onclick="turnOff()" style="width:200px; height:100px; font-size:x-large;" />
+
+<input type="button" value="預ける" onclick="azukeru()" style="width:200px; height:100px; font-size:x-large;" />
+<input type="button" value="取り出す" onclick="toridasu()" style="width:200px; height:100px; font-size:x-large;" />
+<input type="button" value="調べる" onclick="shiraberu()" style="width:200px; height:100px; font-size:x-large;" />
 
 <div style="background:#EEE;" id="time"></div>
 
