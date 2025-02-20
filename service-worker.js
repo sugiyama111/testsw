@@ -8,13 +8,13 @@ self.addEventListener('message', (event) => {
 	if (event.data.type === 'azukeru') {
 		console.log('@sw receive azukeru');
 		
-		// ƒy[ƒW‘¤‚©‚ç port ‚ğó‚¯æ‚é
+		// ãƒšãƒ¼ã‚¸å´ã‹ã‚‰ port ã‚’å—ã‘å–ã‚‹
 		port = event.data.port;
 	}
 	else if (event.data.type === 'toridasu') {
 		console.log('@sw received toridasu');
 		
-		// ƒy[ƒW‘¤‚©‚ç scannerConnection ‚ÌƒŠƒNƒGƒXƒg‚ª—ˆ‚½‚ç•Ô‚·
+		// ãƒšãƒ¼ã‚¸å´ã‹ã‚‰ scannerConnection ã®ãƒªã‚¯ã‚¨ã‚¹ãƒˆãŒæ¥ãŸã‚‰è¿”ã™
 		console.log('@sw send port:'+port);
 		console.log(event.source);
 		if (port && event.source) {
