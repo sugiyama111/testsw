@@ -58,11 +58,15 @@ function azukeru() {
 		    { type: "azukeru", port: port },
 		    [port] // transferable objects として渡す
 	    );
+	    port = null;
 	}
 }
 
 function shiraberu() {
 	console.log('port: '+port);
+	if (port) {
+		port.postMessage("PWA");
+	}
 }
 
 function toridasu() {
