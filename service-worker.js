@@ -16,8 +16,9 @@ self.addEventListener('message', (event) => {
 		
 		// ページ側から scannerConnection のリクエストが来たら返す
 		console.log('@sw send port:'+port);
-		console.log(event.source.postMessage);
+		
 		if (port && event.source) {
+			console.log("now sending");
 			event.source.postMessage({ type: 'kaesu', port }, [port]);
 		}
 	}
